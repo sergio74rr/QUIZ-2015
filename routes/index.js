@@ -9,6 +9,11 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz', errors: []});
 });
 
+// Página de creditos (GET /author)
+router.get('/author', function(req, res) {
+  res.render('author', { title: 'Creditos', errors: []});
+});
+
 // Autoload de comandos con :quizId
 router.param('quizId', quizController.load);  // autoload :quizId
 
@@ -24,6 +29,5 @@ router.delete('/quizes/:quizId(\\d+)',     quizController.destroy);
 
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
 router.post('/quizes/:quizId(\\d+)/comments',    commentController.create);
-
 
 module.exports = router;
