@@ -20,16 +20,10 @@
   <a href="/quizes/new"><button>Crear pregunta</button></a>
 <%}%>
 
+
 Busca en las preguntas<p>
 
-<form method="get" action="/quizes" >      
-  <input type="text" name="search" value="Texto a buscar"/> <p>
-  <button type="submit">Busca</button>
+<form method="get" action="/quizes">
+      <input type="text" name="search" value="Escriba aquí"/>
+      <input type="submit" value="Buscar">
 </form>
-
-<table>
-  <% var i; for(i=0; i < quizes.length; i++){ %>
-    <% if(quizes[i].pregunta.search(busqueda)){ %>    
-      <tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
-  <% } %>
-     </table>
