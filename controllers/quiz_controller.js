@@ -1,6 +1,4 @@
 var models = require('../models/models.js');
-var busqueda = "";
-
 
 // Autoload :id
 exports.load = function(req, res, next, quizId) {
@@ -22,23 +20,13 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes
 exports.index = function(req, res) {
-  if(req.query.search){   
-    busqueda = "%"+req.query.search+"%";
-  }
-  if(busqueda){   
-    models.Quiz.findAll({where: ["pregunta like ?", busqueda]}).then(function(quizes){
-      res.render('quizes/index.ejs', {quizes : quizes, errors: [] })}).catch(function(error){
-        next(error);
-      });
-  }else{
-      models.Quiz.findAll().then(
-        function(quizes) {
-          res.render('quizes/index.ejs', {quizes: quizes, errors: [] });
-        }
-      ).catch(function(error){next(error)});
-  };
-  busqueda = "";
-}
+  models.Quiz.findAll().then(
+    function(quizes) {
+      res.render('quizes/index.ejs', {quizes: quizes, errors: []});
+    }
+  ).catch(function(error){next(error)});
+};
+
 // GET /quizes/:id
 exports.show = function(req, res) {
   res.render('quizes/show', { quiz: req.quiz, errors: []});
