@@ -20,9 +20,10 @@
   <a href="/quizes/new"><button>Crear pregunta</button></a>
 <%}%>
 
+
 Busca en las preguntas<p>
 
-<form method="get" action="/quizes?search=value" >      
-  <input type="text" name="busqueda" value="Texto a buscar"/> <p>
-  <button type="submit">Busca</button>
+<form method="get" action="/quizes">
+      <input type="text" name="search" value="Escriba aquí"/>
+      <input type="submit" value="Buscar">
 </form>
