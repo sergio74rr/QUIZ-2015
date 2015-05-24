@@ -26,7 +26,7 @@ exports.create = function(req, res) {
 
         if (error) {  // si hay error retornamos mensajes de error de sesión
             req.session.errors = [{"message": 'Se ha producido un error: '+error}];
-            res.redirect("/login");        
+            res.redirect("/login");
             return;
         }
 
@@ -38,7 +38,7 @@ exports.create = function(req, res) {
     });
 };
 
-// DELETE /logout   -- Destruir sesion 
+// DELETE /logout   -- Destruir sesion
 exports.destroy = function(req, res) {
     delete req.session.user;
     res.redirect(req.session.redir.toString()); // redirect a path anterior a login
