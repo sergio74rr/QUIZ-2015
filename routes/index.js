@@ -19,11 +19,19 @@ router.get('/author', function(req, res) {
 // Autoload de comandos con ids
 router.param('quizId', quizController.load);  // autoload :quizId
 router.param('commentId', commentController.load);  // autoload :commentId
+router.param('userId', userController.load);  // autoload :userId
 
 // Definición de rutas de sesion
 router.get('/login',  sessionController.new);     // formulario login
 router.post('/login', sessionController.create);  // crear sesión
 router.get('/logout', sessionController.destroy); // destruir sesión
+
+// Definición de rutas de cuenta
+router.get('/user',  userController.new);     // formulario sign un
+router.post('/user',  userController.create);     // registrar usuario
+router.get('/user/:userId(\\d+)/edit',  sessionController.loginRequired, userController.edit);     // editar información de cuenta
+router.put('/user/:userId(\\d+)',  sessionController.loginRequired, userController.update);     // actualizar información de cuenta
+router.delete('/user/:userId(\\d+)',  sessionController.loginRequired, userController.destroy);     // borrar cuenta
 
 // Definición de rutas de /quizes
 router.get('/quizes',                      quizController.index);
@@ -38,7 +46,7 @@ router.delete('/quizes/:quizId(\\d+)',     sessionController.loginRequired, quiz
 // Definición de rutas de comentarios
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
 router.post('/quizes/:quizId(\\d+)/comments',    commentController.create);
-router.get('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish', 
+router.get('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish',
 	                                    sessionController.loginRequired, commentController.publish);
 
 module.exports = router;

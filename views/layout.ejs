@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8"><title> QUIZ </title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel='stylesheet' 
+  <link rel='stylesheet'
         type='text/css'
         media='only screen and (min-width: 530px) and (min-device-width: 481px)'
         href='/stylesheets/wide.css' />
   <link rel='stylesheet'
         type='text/css'
-        media='only screen and (max-width: 480px)' 
+        media='only screen and (max-width: 480px)'
         href='/stylesheets/smartphone.css' />
 
-</head> 
+</head>
 
 <body>
 <div id="page-wrap">
   <header class="main" id="h1">
     <%if(!session.user){%>
-      <span class="right"><a href="/login">Login</a></span>
+      <span class="right"><a href="/user">Sign up</a> - <a href="/login">Login</a></span>
     <%}else{%>
-      <span class="right"> <%=session.user.username%><a href="/logout">Logout</a></span>
+      <span class="right"> <%=session.user.username%> - <a href="/user/<%=session.user.id%>/edit">Settings</a> - <a href="/logout">Logout</a></span>
     <%}%>
-    
+
     <h2>Quiz<span>: el juego de las preguntas</span></h2>
   </header>
 
@@ -49,5 +49,5 @@
     <a href="https://github.com/sergio74rr/QUIZ-2015">Repositorio GITHUB que aloja este desarrollo.</a>
   </footer>
 </div>
-</body> 
+</body>
 </html>
