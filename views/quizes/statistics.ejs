@@ -1,5 +1,68 @@
-    <h3>Pagina de Estadísticas</h3><br />
-    <h4>
-    	<p>En esta página se presentan las estadísticas del juego.</p><br />
 
-    </h4>
+<h3>Estadísticas</h3>
+<table style="margin: 0 auto" border="1">
+
+			<tr>
+			<td>Número de preguntas</td>
+			<td> <%= quizes.length %> </td>
+			</tr>
+			<tr>
+			<td>Número de comentarios totales</td>
+			<td> <% var comments=0;
+				for(i in quizes){
+				for(index in quizes[i].Comments){
+				comments++;}
+				}
+			     %>
+			<%= comments %>
+			</td>
+			</tr>
+			<tr>
+			<td>Número medio de comentarios por pregunta</td>
+			<td>
+			<% var media=0; var suma=0;
+			for(i in quizes){
+			suma = suma+quizes[i].Comments.length;
+			}
+			media=suma/quizes.length;
+			%> <%= media %>
+			</td>
+			</tr>
+			<tr>
+			<td>Número de preguntas sin comentarios</td>
+			<td>
+			<%var a=0;
+			for(i in quizes){
+			if(quizes[i].Comments.length==0){
+			a=a+1;
+			}
+			} %>
+			<%= a %>
+			</td>
+			</tr>
+			<tr>
+			<td>Número de preguntas con comentario</td>
+			<td>
+			<%var b=0;
+			for(i in quizes){
+			if(quizes[i].Comments.length!=0){
+			b=b+1;}
+			}
+			%>
+			<%= b %>
+			</td>
+			</tr>
+			<tr>
+			<td>Número de comentarios publicados</td>
+			<td>
+			<% var comments=0;
+				for(i in quizes){
+				for(index in quizes[i].Comments){
+				if(quizes[i].Comments[index].publicado){
+				comments++;}}
+				}
+			     %>
+			<%= comments %>
+			</td>
+			</tr>
+	</table><p>

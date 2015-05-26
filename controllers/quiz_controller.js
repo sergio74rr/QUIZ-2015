@@ -148,3 +148,10 @@ exports.destroy = function(req, res) {
 };
 
 //  console.log("req.quiz.id: " + req.quiz.id);
+
+// STATISTICS /quizes/statistics
+ exports.statistics = function(req, res){
+      models.Quiz.findAll({include: [{ model: models.Comment }]}).then(function(quizes) {
+ 	      res.render('quizes/statistics', {quizes: quizes, title: 'Estadísticas', errors: [] });
+ });
+ };
