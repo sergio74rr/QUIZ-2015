@@ -6,6 +6,7 @@ var quizController = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
 var sessionController = require('../controllers/session_controller');
 var userController = require('../controllers/user_controller');
+//var DBController = require('../controllers/DB_controller');
 
 // Página de entrada (home page)
 router.get('/', function(req, res) {

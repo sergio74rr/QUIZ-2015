@@ -29,6 +29,21 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next){
+	if(req.session.user){
+		if(req.session.time){
+			var datossesion = new Date(req.session.time);
+			var duracion= (new Date() - datossesion)/1000;
+				if (duracion >= 120){
+					delete req.session.user;
+				}
+		}
+	req.session.time = (new Date()).toString();
+	}
+	next();
+
+});
+
 // Helpers dinamicos:
 app.use(function(req, res, next) {
 
